@@ -10,14 +10,18 @@ namespace RBX
 		std::string additionalHeaders;
 
 	public:
-		//Http(const Http&);
-		Http(const std::string&);
-		Http(const char*);
+		Http(const std::string& url)
+			: url(url)
+		{
+		}
+
+		Http(const char* url)
+			: url(url)
+		{
+		}
 	public:
 		void post(std::istream&, bool, std::string&);
 		void get(std::string&);
-	public:
-		~Http();
 
 	public:
 		static bool trustCheck(const char*);

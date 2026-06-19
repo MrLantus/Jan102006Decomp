@@ -2,7 +2,6 @@
 #include "RbxGraphics/Adorn.h"
 #include "AppDraw/SelectState.h"
 #include "util/IndexArray.h"
-#include "AppDraw/SelectState.h"
 
 namespace RBX 
 {
@@ -47,9 +46,20 @@ namespace RBX
 
 		void shouldRenderSetDirty();
 
-		virtual void render2d(Adorn* adorn);
-		virtual void render3dAdorn(Adorn* adorn);
-		virtual void render3dSelect(Adorn* adorn, SelectState selectState);
+		virtual void render2d(Adorn* adorn)
+		{
+			return;
+		}
+
+		virtual void render3dAdorn(Adorn* adorn)
+		{
+			return;
+		}
+
+		virtual void render3dSelect(Adorn* adorn, SelectState selectState)
+		{
+			return;
+		}
 	};
 
 
