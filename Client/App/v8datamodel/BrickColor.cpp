@@ -183,37 +183,117 @@ namespace RBX
 		insert(lego_268, 52, 43, 117, "Medium lilac");
 
 		insertPaletteItem(lego_1);
-		insertPaletteItem(lego_208);
-		insertPaletteItem(lego_194);
-		insertPaletteItem(lego_199);
-		insertPaletteItem(lego_26);
-		insertPaletteItem(lego_21);
-		insertPaletteItem(lego_24);
-		insertPaletteItem(lego_226);
-		insertPaletteItem(lego_23);
-		insertPaletteItem(lego_107);
-		insertPaletteItem(lego_102);
-		insertPaletteItem(lego_11);
-		insertPaletteItem(lego_45);
-		insertPaletteItem(lego_135);
-		insertPaletteItem(lego_106);
-		insertPaletteItem(lego_105);
-		insertPaletteItem(lego_141);
-		insertPaletteItem(lego_28);
-		insertPaletteItem(lego_37);
-		insertPaletteItem(lego_119);
-		insertPaletteItem(lego_29);
-		insertPaletteItem(lego_151);
-		insertPaletteItem(lego_38);
-		insertPaletteItem(lego_192);
-		insertPaletteItem(lego_104);
-		insertPaletteItem(lego_9);
-		insertPaletteItem(lego_101);
+		insertPaletteItem(lego_2);
+		insertPaletteItem(lego_3);
 		insertPaletteItem(lego_5);
-		insertPaletteItem(lego_153);
-		insertPaletteItem(lego_217);
+		insertPaletteItem(lego_6);
+		insertPaletteItem(lego_9);
+		insertPaletteItem(lego_11);
+		insertPaletteItem(lego_12);
 		insertPaletteItem(lego_18);
+		insertPaletteItem(lego_21);
+		insertPaletteItem(lego_22);
+		insertPaletteItem(lego_23);
+		insertPaletteItem(lego_24);
+		insertPaletteItem(lego_25);
+		insertPaletteItem(lego_26);
+		insertPaletteItem(lego_27);
+		insertPaletteItem(lego_28);
+		insertPaletteItem(lego_29);
+		insertPaletteItem(lego_36);
+		insertPaletteItem(lego_37);
+		insertPaletteItem(lego_38);
+		insertPaletteItem(lego_39);
+		insertPaletteItem(lego_45);
+		insertPaletteItem(lego_100);
+		insertPaletteItem(lego_101);
+		insertPaletteItem(lego_102);
+		insertPaletteItem(lego_103);
+		insertPaletteItem(lego_104);
+		insertPaletteItem(lego_105);
+		insertPaletteItem(lego_106);
+		insertPaletteItem(lego_107);
+		insertPaletteItem(lego_108);
+		insertPaletteItem(lego_110);
+		insertPaletteItem(lego_112);
+		insertPaletteItem(lego_115);
+		insertPaletteItem(lego_116);
+		insertPaletteItem(lego_118);
+		insertPaletteItem(lego_119);
+		insertPaletteItem(lego_120);
+		insertPaletteItem(lego_121);
+		insertPaletteItem(lego_123);
+		insertPaletteItem(lego_124);
 		insertPaletteItem(lego_125);
+		insertPaletteItem(lego_127);
+		insertPaletteItem(lego_128);
+		insertPaletteItem(lego_131);
+		insertPaletteItem(lego_135);
+		insertPaletteItem(lego_136);
+		insertPaletteItem(lego_137);
+		insertPaletteItem(lego_138);
+		insertPaletteItem(lego_140);
+		insertPaletteItem(lego_141);
+		insertPaletteItem(lego_145);
+		insertPaletteItem(lego_146);
+		insertPaletteItem(lego_147);
+		insertPaletteItem(lego_148);
+		insertPaletteItem(lego_149);
+		insertPaletteItem(lego_150);
+		insertPaletteItem(lego_151);
+		insertPaletteItem(lego_153);
+		insertPaletteItem(lego_154);
+		insertPaletteItem(lego_168);
+		insertPaletteItem(lego_180);
+		insertPaletteItem(lego_200);
+		insertPaletteItem(lego_190);
+		insertPaletteItem(lego_191);
+		insertPaletteItem(lego_192);
+		insertPaletteItem(lego_193);
+		insertPaletteItem(lego_194);
+		insertPaletteItem(lego_195);
+		insertPaletteItem(lego_196);
+		insertPaletteItem(lego_198);
+		insertPaletteItem(lego_199);
+		insertPaletteItem(lego_208);
+		insertPaletteItem(lego_209);
+		insertPaletteItem(lego_210);
+		insertPaletteItem(lego_211);
+		insertPaletteItem(lego_212);
+		insertPaletteItem(lego_213);
+		insertPaletteItem(lego_216);
+		insertPaletteItem(lego_217);
+		insertPaletteItem(lego_218);
+		insertPaletteItem(lego_219);
+		insertPaletteItem(lego_220);
+		insertPaletteItem(lego_221);
+		insertPaletteItem(lego_222);
+		insertPaletteItem(lego_223);
+		insertPaletteItem(lego_224);
+		insertPaletteItem(lego_225);
+		insertPaletteItem(lego_226);
+		insertPaletteItem(lego_232);
+		insertPaletteItem(lego_268);
+		insertPaletteItem(lego_40);
+		insertPaletteItem(lego_41);
+		insertPaletteItem(lego_42);
+		insertPaletteItem(lego_43);
+		insertPaletteItem(lego_44);
+		insertPaletteItem(lego_47);
+		insertPaletteItem(lego_48);
+		insertPaletteItem(lego_49);
+		insertPaletteItem(lego_50);
+		insertPaletteItem(lego_111);
+		insertPaletteItem(lego_113);
+		insertPaletteItem(lego_126);
+		insertPaletteItem(lego_133);
+		insertPaletteItem(lego_134);
+		insertPaletteItem(lego_143);
+		insertPaletteItem(lego_157);
+		insertPaletteItem(lego_158);
+		insertPaletteItem(lego_176);
+		insertPaletteItem(lego_178);
+		insertPaletteItem(lego_179);
 
 		generatePaletteMap();
 	}
@@ -245,7 +325,7 @@ namespace RBX
 				return BrickColor(iter->first);
 		}
 
-		return BrickColor(lego_194);
+		return BrickColor(lego_2);
 	}
 
 	BrickColor BrickColor::random()
@@ -262,7 +342,7 @@ namespace RBX
 	BrickColor BrickColor::closest(G3D::Color4 color)
 	{
 		float closestDistance = 10000.0f;
-		Number number = lego_194;
+		Number number = lego_2;
 
 		std::map<enum Number, G3D::Color4>::iterator iter = BrickMap::singleton().map2.begin();
 		std::map<enum Number, G3D::Color4>::iterator end = BrickMap::singleton().map2.end();
@@ -291,7 +371,7 @@ namespace RBX
 		if (it != BrickMap::singleton().map1.end())
 			this->number = it->first;
 		else
-			this->number = lego_194;
+			this->number = lego_2;
 	}
 
 	const std::string& BrickColor::name() const
