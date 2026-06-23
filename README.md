@@ -1,5 +1,5 @@
-# RBXGS Decompilation
-A decompilation of [RBXGS (Roblox Grid Service) version 0.3.634.0](https://archive.org/download/rbxgssetup/S3FileHandler_RBXGSSetup_0.3.634.0.msi), currently focusing on specific critical components (v8kernel, v8world, etc.) for now, and will later expand out to other classes.
+# Jan 10 2006 Decompilation
+A decompilation of January 10 2006 (Not like a decompilation, mroe of a recon), currently focusing on specific critical components (v8kernel, v8world, etc.) for now, and will later expand out to other classes.
 
 You need to use Microsoft Visual Studio 2005 with [SP1 Update](https://web.archive.org/web/20200801000000id_/download.microsoft.com/download/6/3/c/63c69e5d-74c9-48ea-b905-30ac3831f288/VS80sp1-KB926601-X86-ENU.exe) for matching. (Visual C/C++(14.00.50727)[C++])
 
