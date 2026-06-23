@@ -6,9 +6,9 @@
 
 namespace RBX
 {
-	class LocalBackpack;
+	class LocalPlayerHopper;
 	class Workspace;
-	class StarterPackService;
+	class HopperService;
 	class GuiRoot;
 	class TimeState;
 	class IMetric;
@@ -37,10 +37,10 @@ namespace RBX
 		};
 
 	private:
-		boost::shared_ptr<LocalBackpack> localBackpack;
+		boost::shared_ptr<LocalPlayerHopper> localPlayerHopper;
 		boost::shared_ptr<Workspace> workspace;
 		boost::shared_ptr<RunService> runService;
-		boost::shared_ptr<StarterPackService> starterPackService;
+		boost::shared_ptr<HopperService> hopperService;
 		boost::shared_ptr<GuiRoot> guiRoot;
 		boost::shared_ptr<GuiRoot> guiHooks;
 		GuiTarget* guiTarget;
