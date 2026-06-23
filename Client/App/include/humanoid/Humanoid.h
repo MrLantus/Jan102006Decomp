@@ -33,7 +33,6 @@ namespace RBX
 		{
 			HAS_PART,
 			HAS_POINT,
-			CLICK_TO_MOVE,
 			DIRECTION_MOVE
 		};
 
@@ -57,8 +56,6 @@ namespace RBX
 		};
 
 	private:
-		float health;
-		float maxHealth;
 		float walkRotationalVelocity;
 		int walkTimer;
 		WalkMode walkMode;
@@ -80,8 +77,6 @@ namespace RBX
 		std::auto_ptr<State> currentState;
 
 	public:
-		static Reflection::BoundProp<float, 1> propHealth;
-		static Reflection::BoundProp<float, 1> propMaxHealth;
 		static Reflection::SignalDesc<Humanoid, void(void)> event_Died;
 		static Reflection::SignalDesc<Humanoid, void(float)> event_Running;
 		static Reflection::SignalDesc<Humanoid, void(float)> event_Climbing;
@@ -89,7 +84,6 @@ namespace RBX
 		static Reflection::SignalDesc<Humanoid, void(bool)> event_FreeFalling;
 		static Reflection::SignalDesc<Humanoid, void(bool)> event_GettingUp;
 		static Reflection::SignalDesc<Humanoid, void(bool)> event_FallingDown;
-		static Reflection::SignalDesc<Humanoid, void(bool)> event_Seated;
 	  
 	private:
 		void resetTimer();
@@ -100,8 +94,6 @@ namespace RBX
 		Humanoid();
 		virtual ~Humanoid();
 	public:
-		void setHealth(float);
-		float relativeHealth() const;
 		Body* getTorsoBody();
 		Body* getRootBody();
 		void setWalkDirection(const G3D::Vector3&);
@@ -112,11 +104,6 @@ namespace RBX
 		const G3D::Vector3& getWalkToPoint() const;
 		void setWalkToPart(PartInstance*);
 		PartInstance* getWalkToPart() const;
-		void setJump(bool);
-		bool getJump() const;
-		void setSit(bool);
-		bool getSit() const;
-		bool canSit() const;
 		void setTargetPoint(const G3D::Vector3&);
 		const G3D::Vector3& getTargetPoint() const;
 		void moveTo(const G3D::Vector3&, PartInstance*);
