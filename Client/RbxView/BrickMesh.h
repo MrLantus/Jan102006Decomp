@@ -1,3 +1,4 @@
+// LEGACY - 8/11/05 approximately
 #pragma once
 #include "QuadVolume.h"
 #include "v8datamodel/BrickColor.h"
