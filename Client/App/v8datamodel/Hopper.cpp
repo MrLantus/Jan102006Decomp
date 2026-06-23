@@ -1,13 +1,13 @@
 #include "v8datamodel/Hopper.h"
-#include "v8datamodel/Backpack.h"
+#include "v8datamodel/PlayerHopper.h"
 #include "v8datamodel/Workspace.h"
 
 namespace RBX
 {
-	Reflection::PropDescriptor<BackpackItem, TextureId> desc_TextureId("TextureId", "Data", &BackpackItem::getTextureId, &BackpackItem::setTextureId, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<PlayerHopperItem, TextureId> desc_TextureId("TextureId", "Data", &PlayerHopperItem::getTextureId, &PlayerHopperItem::setTextureId, Reflection::PropertyDescriptor::STANDARD);
 
-	Reflection::PropDescriptor<HopperBin, std::string> desc_legacyCommand("Command", "Data", NULL, &HopperBin::setLegacyCommand, Reflection::PropertyDescriptor::LEGACY);
-	Reflection::PropDescriptor<HopperBin, std::string> desc_legacyTextureName("TextureName", "Data", NULL, &HopperBin::setLegacyTextureName, Reflection::PropertyDescriptor::LEGACY);
+	Reflection::PropDescriptor<HopperBin, std::string> desc_Command("Command", "Data", NULL, &HopperBin::setCommand, Reflection::PropertyDescriptor::STANDARD);
+	Reflection::PropDescriptor<HopperBin, std::string> desc_TextureName("TextureName", "Data", NULL, &HopperBin::setTextureName, Reflection::PropertyDescriptor::STANDARD);
 	Reflection::EnumPropDescriptor<HopperBin, HopperBin::BinType> desc_BinType("BinType", "Data", &HopperBin::getBinType, &HopperBin::setBinType, Reflection::PropertyDescriptor::STANDARD);
 
 	Reflection::SignalDesc<HopperBin, void(void)> desc_Deselected("Deselected");
@@ -20,7 +20,7 @@ namespace RBX
 
 	bool Hopper::askAddChild(const Instance* instance) const
 	{
-		return fastDynamicCast<const BackpackItem>(instance) != NULL;
+		return fastDynamicCast<const PlayerHopperItem>(instance) != NULL;
 	}
 
 	bool Hopper::askSetParent(const Instance* instance) const
@@ -28,27 +28,27 @@ namespace RBX
 		return true;
 	}
 
-	bool BackpackItem::askSetParent(const Instance* instance) const
+	bool PlayerHopperItem::askSetParent(const Instance* instance) const
 	{
 		return true;
 	}
 
-	bool BackpackItem::askAddChild(const Instance* instance) const
+	bool PlayerHopperItem::askAddChild(const Instance* instance) const
 	{
 		return true;
 	}
 
-	const TextureId BackpackItem::getTextureId() const
+	const TextureId PlayerHopperItem::getTextureId() const
 	{
 		return textureId;
 	}
 
-	bool BackpackItem::isEnabled()
+	bool PlayerHopperItem::isEnabled()
 	{
-		return getParent() && fastDynamicCast<Backpack>(getParent()) != NULL;
+		return getParent() && fastDynamicCast<PlayerHopper>(getParent()) != NULL;
 	}
 
-	void BackpackItem::setTextureId(const TextureId& value)
+	void PlayerHopperItem::setTextureId(const TextureId& value)
 	{
 		if (value != textureId)
 		{
@@ -65,7 +65,7 @@ namespace RBX
 		}
 	}
 
-	G3D::Vector2 BackpackItem::getSize() const
+	G3D::Vector2 PlayerHopperItem::getSize() const
 	{
 		float width = GuiRoot::toPixelSize(G3D::Vector2(10.0f, 10.0f)).x;
 		return G3D::Vector2(width, width);
@@ -88,18 +88,18 @@ namespace RBX
 			if (binType != SCRIPT_BIN)
 			{
 				std::string textureName = Reflection::EnumDesc<BinType>::singleton().convertToString(binType);
-				setLegacyTextureName(textureName);
+				setTextureName(textureName);
 			}
 		}
 	}
 
-	void HopperBin::setLegacyTextureName(const std::string& value)
+	void HopperBin::setTextureName(const std::string& value)
 	{
 		TextureId textureId = ContentId::fromAssets("Textures\\" + value + ".png");
 		setTextureId(textureId);
 	}
 
-	void HopperBin::setLegacyCommand(const std::string& text)
+	void HopperBin::setCommand(const std::string& text)
 	{
 		BinType newBinType;
 		
@@ -149,18 +149,18 @@ namespace RBX
 		}
 	}
 
-	StarterPackService::StarterPackService()
+	HopperService::HopperService()
 	{
 		setName("StarterPack");
 	}
 
 	//97.87% match
 	//le EPIC TROLL
-	void StarterPackService::render2d(Adorn* adorn)
+	void HopperService::render2d(Adorn* adorn)
 	{
 		TopMenuBar::render2d(adorn);
 
-		if (findFirstChildOfType<BackpackItem>())
+		if (findFirstChildOfType<PlayerHopperItem>())
 		{
 			G3D::Rect2D viewPort = adorn->getViewport();
 			int fontSize = GuiRoot::normalizedFontSize(12);
