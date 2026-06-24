@@ -91,9 +91,7 @@ namespace RBX
 
 	void Lighting::onChildRemoving(Instance* instance)
 	{
-		if (sky.get() == instance)
 		{
-			sky.reset();
 			fireLightingChanged(true);
 			RunService* runService = ServiceProvider::findServiceProvider(this)->find<RunService>();
 			if (runService)
