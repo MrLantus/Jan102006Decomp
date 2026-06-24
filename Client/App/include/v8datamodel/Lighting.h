@@ -12,12 +12,9 @@ namespace RBX
 					 public Service
 	{
 	private:
-		G3D::LightingParameters skyParameters;
 		G3D::Color3 ambientTop;
 		G3D::Color3 ambientBottom;
-		bool hasSky;
 		G3D::Color4 clearColor;
-		boost::posix_time::time_duration timeOfDay;
 	public:
 		boost::shared_ptr<Sky> sky;
 
@@ -28,13 +25,6 @@ namespace RBX
 		//Lighting(const Lighting&);
 		Lighting();
 	public:
-		void replaceSky(Sky* sky);
-		bool isSkySuppressed() const;
-		void suppressSky(const bool);
-		const G3D::LightingParameters& getSkyParameters() const
-		{
-			return skyParameters;
-		}
 		G3D::Color4 getClearColor() const;
 		void setClearColor(G3D::Color4 newClearColor);
 		G3D::Color3 getLightColor() const
@@ -52,27 +42,6 @@ namespace RBX
 			return ambientBottom;
 		}
 		void setAmbientBottom(G3D::Color3 newAmbientBottom);
-		std::string getTimeStr() const;
-		void setTimeStr(const std::string& time);
-		void setTime(const boost::posix_time::time_duration& time);
-		double getGameTime() const;
-		double getMinutesAfterMidnight();
-		void setMinutesAfterMidnight(double seconds);
-		float getMoonPhase()
-		{
-			return skyParameters.moonPhase;
-		}
-		G3D::Vector3 getMoonPosition();
-		G3D::Vector3 getSunPosition();
-		float getGeographicLatitude() const
-		{
-			return skyParameters.geoLatitude;
-		}
-		void setGeographicLatitude(float newGeographicLatitude);
-		G3D::Color3 getClearColor3() const
-		{
-			return G3D::Color3(clearColor.r, clearColor.g, clearColor.b);
-		}
 		void setClearColor3(G3D::Color3 color)
 		{
 			setClearColor(G3D::Color4(color));
