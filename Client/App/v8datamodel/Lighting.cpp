@@ -5,59 +5,24 @@ namespace RBX
 {
 	const char* sLighting = "Lighting";
 
-	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientTop("TopAmbientV9", "Appearance", &Lighting::getAmbientTop, &Lighting::setAmbientTop, Reflection::PropertyDescriptor::STANDARD);
-	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbientV9", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
-	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_LightColor("SpotLightV9", "Appearance", &Lighting::getLightColor, &Lighting::setLightColor, Reflection::PropertyDescriptor::STANDARD);
+	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientTop("TopAmbient", "Appearance", &Lighting::getAmbientTop, &Lighting::setAmbientTop, Reflection::PropertyDescriptor::STANDARD);
+	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbient", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
+	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_LightColor("SpotLight", "Appearance", &Lighting::getLightColor, &Lighting::setLightColor, Reflection::PropertyDescriptor::STANDARD);
 	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ClearColor("ClearColor", "Appearance", &Lighting::getClearColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
-	static const Reflection::PropDescriptor<Lighting, std::string> prop_Time("TimeOfDay", "Data", &Lighting::getTimeStr, &Lighting::setTimeStr, Reflection::PropertyDescriptor::STANDARD);
 	static const Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
 	
 	Lighting::Lighting()
 		: Base(),
-		  ambientTop(209/255.0f, 208/255.0f, 217/255.0f),
-		  ambientBottom(122/255.0f, 134/255.0f, 120/255.0f),
-		  hasSky(true),
-		  clearColor(G3D::Color3::white()),
-		  timeOfDay(boost::posix_time::duration_from_string("14:00:00"))
+		  ambientTop(207/255.0f, 207/255.0f, 207/255.0f),
+		  ambientBottom(205/255.0f, 205/255.0f, 205/255.0f),
+		  clearColor(G3D::Color3::white())
 	{
 		skyParameters.lightColor = G3D::Color3(152/255.0f, 137/255.0f, 102/255.0f);
-		skyParameters.setTime(timeOfDay.total_seconds());
 		setName("Lighting");
 	}
 
 	Lighting::~Lighting()
 	{
-	}
-
-	G3D::Vector3 Lighting::getMoonPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueMoonPosition : skyParameters.moonPosition;
-	}
-
-	G3D::Vector3 Lighting::getSunPosition()
-	{
-		return (skyParameters.physicallyCorrect) ? skyParameters.trueSunPosition : skyParameters.sunPosition;
-	}
-
-	void Lighting::replaceSky(Sky* sky)
-	{
-		Sky* currentSky = findFirstChildOfType<Sky>();
-		while (currentSky)
-		{
-			currentSky->setParent(NULL);
-			currentSky = findFirstChildOfType<Sky>();
-		}
-		sky->setParent(this);
-	}
-
-	std::string Lighting::getTimeStr() const
-	{
-		return boost::posix_time::to_simple_string(timeOfDay);
-	}
-
-	void Lighting::setTimeStr(const std::string &time)
-	{
-		setTime(boost::posix_time::duration_from_string(time));
 	}
 
 	void Lighting::setClearColor(G3D::Color4 newClearColor)
@@ -110,44 +75,6 @@ namespace RBX
 			if (runService)
 				runService->invalidateRunViews();
 		}
-	}
-
-	void Lighting::setGeographicLatitude(float newGeographicLatitude)
-	{
-		if (newGeographicLatitude != skyParameters.geoLatitude)
-		{
-			skyParameters.geoLatitude = newGeographicLatitude;
-			raisePropertyChanged(prop_GeographicLatitude);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::findServiceProvider(this)->find<RunService>();
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	//65.93% matching.
-	void Lighting::setTime(const boost::posix_time::time_duration& time)
-	{
-		if (timeOfDay != time)
-		{
-			timeOfDay = boost::posix_time::time_duration(0, 0, time.total_seconds());
-			skyParameters.setTime(timeOfDay.total_seconds());
-			raisePropertyChanged(prop_Time);
-			fireLightingChanged(false);
-			RunService* runService = ServiceProvider::findServiceProvider(this)->find<RunService>();
-			if (runService)
-				runService->invalidateRunViews();
-		}
-	}
-
-	double Lighting::getMinutesAfterMidnight()
-	{
-		return timeOfDay.total_milliseconds() / 60000.0;
-	}
-
-	void Lighting::setMinutesAfterMidnight(double seconds)
-	{
-		setTime(boost::posix_time::time_duration(0, 0, seconds * 60));
 	}
 
 	void Lighting::onChildAdded(Instance* instance)
