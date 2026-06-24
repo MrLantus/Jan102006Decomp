@@ -13,6 +13,8 @@ namespace RBX
 		  hardwareDevice(NULL),
 		  keyboardPrimaryController(new KeyboardPrimaryController(this)),
 		  keyboardSecondaryController(new KeyboardSecondaryController(this)),
+		  keyboardPadOneController(new keyboardPadOneController(this)),
+		  keyboardPadTwoController(new keyboardPadTwoController(this)),
 		  nullController(new NullController)
 	{
 	}
