@@ -32,6 +32,12 @@ namespace RBX
 		case Controller::SECONDARY_CONTROLLER:
 			return keyboardSecondaryController;
 
+		case Controller::PAD_ONE_CONTROLLER:
+			return keyboardPadOneController;
+
+		case Controller::PAD_TWO_CONTROLLER:
+			return keyboardPadTwoController;
+
 		case Controller::AI_CHASE_CONTROLLER:
 			return new AIChaseController(controlledInstance);
 
