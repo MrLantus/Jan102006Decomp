@@ -9,7 +9,6 @@ namespace RBX
 	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_AmbientBottom("BottomAmbient", "Appearance", &Lighting::getAmbientBottom, &Lighting::setAmbientBottom, Reflection::PropertyDescriptor::STANDARD);
 	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_LightColor("SpotLight", "Appearance", &Lighting::getLightColor, &Lighting::setLightColor, Reflection::PropertyDescriptor::STANDARD);
 	static const Reflection::PropDescriptor<Lighting, G3D::Color3> desc_ClearColor("ClearColor", "Appearance", &Lighting::getClearColor3, &Lighting::setClearColor3, Reflection::PropertyDescriptor::STANDARD);
-	static const Reflection::PropDescriptor<Lighting, float> prop_GeographicLatitude("GeographicLatitude", "Data", &Lighting::getGeographicLatitude, &Lighting::setGeographicLatitude, Reflection::PropertyDescriptor::STANDARD);
 	
 	Lighting::Lighting()
 		: Base(),
@@ -17,7 +16,6 @@ namespace RBX
 		  ambientBottom(205/255.0f, 205/255.0f, 205/255.0f),
 		  clearColor(G3D::Color3::white())
 	{
-		skyParameters.lightColor = G3D::Color3(152/255.0f, 137/255.0f, 102/255.0f);
 		setName("Lighting");
 	}
 
