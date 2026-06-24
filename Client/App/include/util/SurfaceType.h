@@ -9,7 +9,7 @@ namespace RBX
 		WELD,
 		STUDS,
 		INLET,
-		SPAWN_deprecated,
+		SPAWN,
 		ROTATE,
 		ROTATE_V,
 		ROTATE_P,
