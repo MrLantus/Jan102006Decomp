@@ -1,3 +1,5 @@
+// TODO - saturted lighting. Until this is properly implented I will just use a shoddy implentation by modifiyng brickcolors - see 
+// https://github.com/MrLantus/Jan102006Decomp/issues/1
 #pragma once
 #include <GLG3D/LightingParameters.h>
 #include "v8tree/Service.h"
