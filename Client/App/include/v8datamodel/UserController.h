@@ -16,6 +16,8 @@ namespace RBX
 		G3D::ReferenceCountedPointer<Controller> playerController;
 		G3D::ReferenceCountedPointer<Controller> keyboardPrimaryController;
 		G3D::ReferenceCountedPointer<Controller> keyboardSecondaryController;
+		G3D::ReferenceCountedPointer<Controller> keyboardPadOneController;
+		G3D::ReferenceCountedPointer<Controller> keyboardPadTwoController;
 		G3D::ReferenceCountedPointer<Controller> nullController;
 
 	public:
@@ -91,6 +93,38 @@ namespace RBX
 		virtual Controller::ControllerType getControllerType() const
 		{
 			return Controller::SECONDARY_CONTROLLER;
+		}
+	};
+
+	class KeyboardPadOneController : public HardwareController
+	{
+	public:
+		KeyboardPadOneController(ControllerService* service)
+			: HardwareController(service)
+		{
+		}
+
+		virtual float getValue(Controller::InputType) const;
+
+		virtual Controller::ControllerType getControllerType() const
+		{
+			return Controller::PAD_ONE_CONTROLLER;
+		}
+	};
+
+	class KeyboardPadTwoController : public HardwareController
+	{
+	public:
+		KeyboardPadTwoController(ControllerService* service)
+			: HardwareController(service)
+		{
+		}
+
+		virtual float getValue(Controller::InputType) const;
+
+		virtual Controller::ControllerType getControllerType() const
+		{
+			return Controller::PAD_TWO_CONTROLLER;
 		}
 	};
 
