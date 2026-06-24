@@ -10,6 +10,10 @@ namespace RBX
 			return G3D::Color3::blue();
 		case SECONDARY_CONTROLLER:
 			return G3D::Color3::red();
+		case PAD_ONE_CONTROLLER:
+			return G3D::Color3::gray();
+		case PAD_TWO_CONTROLLER:
+			return G3D::Color3::gray();
 		case AI_CHASE_CONTROLLER:
 			return G3D::Color3::black();
 		case AI_FLEE_CONTROLLER:
