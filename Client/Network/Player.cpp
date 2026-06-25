@@ -3,10 +3,6 @@
 #include "security/SecurityContext.h"
 #include "v8datamodel/TimerService.h"
 
-RBX::Reflection::PropDescriptor<RBX::Network::Player, RBX::BrickColor> prop_teamColor("TeamColor", "Team", &RBX::Network::Player::getTeamColor, &RBX::Network::Player::setTeamColor, RBX::Reflection::PropertyDescriptor::STANDARD);
-RBX::Reflection::PropDescriptor<RBX::Network::Player, bool> prop_neutral("Neutral", "Team", &RBX::Network::Player::getNeutral, &RBX::Network::Player::setNeutral, RBX::Reflection::PropertyDescriptor::STANDARD);
-RBX::Reflection::PropDescriptor<RBX::Network::Player, std::string> prop_characterAppearance("CharacterAppearance", "Data", &RBX::Network::Player::getCharacterAppearance, &RBX::Network::Player::setCharacterAppearance, RBX::Reflection::PropertyDescriptor::STANDARD);
-
 RBX::Reflection::RefPropDescriptor<RBX::Network::Player, RBX::ModelInstance> prop_Character("Character", "Data", &RBX::Network::Player::getCharacter, &RBX::Network::Player::setCharacter, RBX::Reflection::PropertyDescriptor::STANDARD);
 
 RBX::Reflection::SignalDesc<RBX::Network::Player, void(float)> event_Idled("Idled", "time");
@@ -21,11 +17,7 @@ namespace RBX
 	namespace Network
 	{
 		Player::Player()
-			: teamColor(BrickColor::lego_1),
-			  neutral(true),
-			  under13(false),
-			  superSafeChat(false),
-			  userId(0),
+			: userId(0),
 			  lastActivityTime(0.0)
 		{
 			Security::Context::current().requirePermission(Security::Administrator, "create a Player");
@@ -69,24 +61,6 @@ namespace RBX
 					workspace->getCamera()->zoom(-1.0f);
 					workspace->setDefaultMouseCommand();
 				}
-			}
-		}
-
-		void Player::setTeamColor(BrickColor value)
-		{
-			if (value != teamColor)
-			{
-				teamColor = value;
-				raisePropertyChanged(prop_teamColor);
-			}
-		}
-
-		void Player::setNeutral(bool value)
-		{
-			if (value != neutral)
-			{
-				neutral = value;
-				raisePropertyChanged(prop_neutral);
 			}
 		}
 
