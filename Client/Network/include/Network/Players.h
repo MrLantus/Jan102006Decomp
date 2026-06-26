@@ -18,55 +18,6 @@ namespace RBX
 		class Player;
 		struct CharacterAdded;
 
-		struct ChatMessage
-		{
-		public:
-			const std::string message;
-			const boost::shared_ptr<Player> source;
-			const boost::shared_ptr<Player> destination;
-		};
-
-		struct AbuseReport
-		{
-		public:
-			struct Message
-			{
-				int userID;
-				std::string text;
-			};
-
-		public:
-			int submitterID;
-			int allegedAbuserID;
-			std::string comment;
-			std::list<Message> messages;
-
-		public:
-			void addMessage(const ChatMessage& cm);
-		};
-
-		class AbuseReporter
-		{
-		private:
-			struct data
-			{
-			public:
-				std::queue<AbuseReport> queue;
-				boost::mutex requestSync;
-			};
-
-		private:
-			boost::shared_ptr<data> _data;
-			boost::scoped_ptr<worker_thread> requestProcessor;
-		  
-		public:
-			AbuseReporter(std::string abuseUrl);
-			void add(AbuseReport& r, const std::list<ChatMessage>& chatHistory);
-
-		private:
-			static worker_thread::work_result processRequests(boost::shared_ptr<data>, std::string);
-		};
-
 		extern const char* sPlayers;
 		class Players : public DescribedNonCreatable<Players, Instance, &sPlayers>,
 						public Service,
@@ -78,8 +29,6 @@ namespace RBX
 			class Plugin;
 
 		private:
-			boost::scoped_ptr<AbuseReporter> abuseReporter;
-			std::list<ChatMessage> chatHistory;
 			boost::scoped_ptr<Plugin> plugin;
 			CopyOnWrite<std::vector<boost::shared_ptr<Instance>>> players;
 			boost::shared_ptr<Player> localPlayer;
@@ -96,7 +45,6 @@ namespace RBX
 			Players();
 			virtual ~Players();
 		public:
-			bool superSafeOn() const;
 			boost::shared_ptr<Instance> createLocalPlayer(int);
 			Player* getLocalPlayer() const
 			{
@@ -116,13 +64,6 @@ namespace RBX
 			{
 				return players.read();
 			}
-			void chat(std::string message);
-			void reportAbuse(boost::shared_ptr<Instance> player, std::string comment);
-			void reportAbuse(Player*, std::string);
-			std::list<ChatMessage>::const_iterator chatHistory_begin();
-			std::list<ChatMessage>::const_iterator chatHistory_end();
-			bool canReportAbuse() const;
-			void setAbuseReportUrl(std::string value);
 			bool OnReceive(RakPeerInterface*, Packet*);
 			void setConnection(RakPeerInterface* peer);
 			boost::shared_ptr<Instance> playerFromCharacter(boost::shared_ptr<Instance> character);
@@ -131,8 +72,6 @@ namespace RBX
 			virtual bool askAddChild(const Instance* instance) const;
 			virtual void onChildAdded(Instance*);
 			virtual void onChildRemoving(Instance*);
-		private:
-			void addChatMessage(const ChatMessage&);
 		  
 		public:
 			static Player* getPlayerFromCharacter(Instance* character);
