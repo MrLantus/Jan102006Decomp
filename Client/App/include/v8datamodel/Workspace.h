@@ -18,7 +18,7 @@ namespace RBX
 	{
 	};
 
-	class ToolChanged
+	class HopperBinChanged
 	{
 	};
 
@@ -31,7 +31,7 @@ namespace RBX
 					  public IMovingManager,
 					  public IScriptOwner,
 					  public Notifier<Workspace, DrawChanged>,
-					  public Notifier<Workspace, ToolChanged>,
+					  public Notifier<Workspace, HopperBinChanged>,
 					  public Listener<RunService, Heartbeat>
 	{
 	private:
