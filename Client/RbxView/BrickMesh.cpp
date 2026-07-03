@@ -1,5 +1,3 @@
-// LEGACY - 8/11/05 approximately
-// changed 8/04/05
 #include "BrickMesh.h"
 #include "ViewBase.h"
 
