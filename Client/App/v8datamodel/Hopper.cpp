@@ -2,6 +2,7 @@
 #include "v8datamodel/PlayerHopper.h"
 #include "v8datamodel/Workspace.h"
 
+// exact match?
 namespace RBX
 {
 	Reflection::PropDescriptor<PlayerHopperItem, TextureId> desc_TextureId("TextureId", "Data", &PlayerHopperItem::getTextureId, &PlayerHopperItem::setTextureId, Reflection::PropertyDescriptor::STANDARD);
