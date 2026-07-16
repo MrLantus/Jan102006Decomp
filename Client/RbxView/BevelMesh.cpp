@@ -1,3 +1,4 @@
+// LEGACY - 8/11/05 approximately
 #include "BevelMesh.h"
 
 namespace RBX
