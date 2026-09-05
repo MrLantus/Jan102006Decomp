@@ -18,48 +18,7 @@ namespace RBX
 	{
 		return fastDynamicCast<const ModelInstance>(instance) != NULL;
 	}
-
-	ShirtGraphic::ShirtGraphic()
-	{
-		setName("Shirt Graphic");
-	}
 	
-	void ShirtGraphic::apply(Humanoid* humanoid)
-	{
-		PartInstance* torso = humanoid->getTorso();
-		if (torso)
-		{
-			Decal* decal = torso->findFirstChildOfType<Decal>();
-			if (decal)
-				decal->setTexture(graphic);
-		}
-	}
-
-	Shirt::Shirt()
-		: leftSleeveColor(BrickColor::lego_23),
-		  rightSleeveColor(BrickColor::lego_23),
-		  torsoColor(BrickColor::lego_1)
-	{
-		setName("Shirt");
-	}
-
-	void Shirt::apply(Humanoid* humanoid)
-	{
-		ShirtGraphic::apply(humanoid);
-
-		PartInstance* torso = humanoid->getTorso();
-		if (torso)
-			torso->setColor(torsoColor);
-
-		PartInstance* leftArm = humanoid->getLeftArm();
-		if (leftArm)
-			leftArm->setColor(leftSleeveColor);
-
-		PartInstance* rightArm = humanoid->getRightArm();
-		if (rightArm)
-			rightArm->setColor(rightSleeveColor);
-	}
-
 	Skin::Skin()
 		: skinColor(BrickColor::lego_226)
 	{
